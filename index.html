@@ -16,25 +16,17 @@
             background-color: black;
         }
 
-        .video-background {
+        /* Фоновая фотка (вместо видео) */
+        .photo-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: #000;
-        }
-
-        video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 1;
-            filter: none;
+            background: #000 url("media/background-photo.jpg") center center / cover no-repeat;
+            opacity: 0;
+            animation: bgFadeIn 4s ease-in forwards;
         }
 
         .content {
@@ -43,7 +35,7 @@
             left: 0;
             width: 100%;
             text-align: center;
-            z-index: 10; /* ВАЖНО: поверх видео */
+            z-index: 10; /* поверх фона */
             padding: 20px;
             box-sizing: border-box;
         }
@@ -119,19 +111,19 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes bgFadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         .glow {
             text-shadow: 0 0 10px rgba(255, 105, 180, 0.5), 2px 2px 4px rgba(0,0,0,0.7);
         }
     </style>
 </head>
 <body>
-    <!-- Фоновое видео -->
-    <div class="video-background">
-        <video autoplay muted loop playsinline id="bgVideo" preload="metadata">
-            <source src="media/video.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
+    <!-- Фоновая фотка -->
+    <div class="photo-background"></div>
 
     <!-- Кнопка музыки -->
     <button class="music-btn" id="musicBtn">🎵 Включить музыку</button>
