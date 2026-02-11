@@ -17,12 +17,11 @@
       background: #000;
     }
 
-    /* Важно: высота экрана на мобилках (адресная строка) */
     :root {
       --app-height: calc(var(--vh, 1vh) * 100);
     }
     @supports (height: 100dvh) {
-      :root { --app-height: 100dvh; } /* динамическая видимая высота */
+      :root { --app-height: 100dvh; }
     }
 
     /* Фоновое видео */
@@ -43,6 +42,15 @@
       object-position: center center;
     }
 
+    /* Затемняющий слой поверх видео */
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: rgba(0, 0, 0, 0.35); /* можно 0.4–0.6, если надо ещё темнее */
+    }
+
     .content {
       position: fixed;
       left: 0;
@@ -50,8 +58,6 @@
       z-index: 10;
       box-sizing: border-box;
       text-align: center;
-
-      /* чтобы контент не уезжал под нижнюю панель */
       bottom: max(18px, 6svh);
       padding: 16px 16px;
     }
@@ -97,11 +103,8 @@
     .music-btn {
       position: fixed;
       z-index: 20;
-
-      /* safe-area для iPhone с “челкой” */
       top: calc(14px + env(safe-area-inset-top));
       right: calc(14px + env(safe-area-inset-right));
-
       background: rgba(255, 255, 255, 0.15);
       border: 2px solid rgba(255, 255, 255, 0.5);
       color: white;
@@ -139,6 +142,9 @@
     </video>
   </div>
 
+  <!-- затемняющий слой -->
+  <div class="video-overlay"></div>
+
   <button class="music-btn" id="musicBtn">🎵 Включить музыку</button>
 
   <audio id="bgMusic" loop preload="none">
@@ -153,7 +159,6 @@
   </div>
 
   <script>
-    // Надежный фикс высоты на мобилках через innerHeight (особенно iOS Safari) [web:25]
     function setVH() {
       document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
     }
@@ -197,7 +202,7 @@
     }
 
     window.addEventListener('load', () => {
-      setTimeout(typeWriter, 1200); // можно чуть раньше, чтобы не казалось “пусто”
+      setTimeout(typeWriter, 1200);
     });
 
     musicBtn.addEventListener('click', () => {
