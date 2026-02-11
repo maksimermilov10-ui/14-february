@@ -18,12 +18,12 @@
 
         /* Фоновая фотка (вместо видео) */
         .photo-background {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0; /* БЕЗ отрицательного индекса */
             background: #000 url("media/background-photo.jpg") center center / cover no-repeat;
             opacity: 0;
             animation: bgFadeIn 4s ease-in forwards;
@@ -75,7 +75,7 @@
         }
 
         .music-btn {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
             background: rgba(255, 255, 255, 0.15);
@@ -195,4 +195,5 @@
     </script>
 </body>
 </html>
+
 
