@@ -43,7 +43,7 @@
             left: 0;
             width: 100%;
             text-align: center;
-            z-index: 10;
+            z-index: 10; /* ВАЖНО: поверх видео */
             padding: 20px;
             box-sizing: border-box;
         }
@@ -92,7 +92,7 @@
             padding: 12px 18px;
             border-radius: 25px;
             cursor: pointer;
-            z-index: 20;
+            z-index: 20; /* ещё выше текста */
             font-size: 14px;
             transition: all 0.3s ease;
             font-weight: 500;
@@ -186,7 +186,7 @@
         }
 
         window.addEventListener('load', () => {
-            setTimeout(typeWriter, 1500);
+            setTimeout(typeWriter, 3000);
         });
 
         musicBtn.addEventListener('click', () => {
@@ -203,3 +203,4 @@
     </script>
 </body>
 </html>
+
