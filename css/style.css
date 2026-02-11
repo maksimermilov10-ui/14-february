@@ -1,0 +1,144 @@
+/* Основные настройки */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    color: white;
+    background-color: black;
+}
+
+/* Контейнер для видео-фона */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+}
+
+/* Само видео */
+video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.7;
+    filter: brightness(0.6) contrast(1.1);
+}
+
+/* Контейнер для текста */
+.content {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Заголовок Love is... */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    color: #ff69b4;
+    letter-spacing: 2px;
+}
+
+/* Основная фраза */
+.message {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    min-height: 60px;
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Курсор печатной машинки — неоновое сердечко */
+.cursor {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 1.6rem;
+    color: #ff4da6;
+    text-shadow:
+        0 0 4px rgba(255, 77, 166, 0.7),
+        0 0 8px rgba(255, 77, 166, 0.7),
+        0 0 12px rgba(255, 77, 166, 0.9);
+    animation: blink 1s infinite;
+}
+
+/* Кнопка музыки */
+.music-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 20;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+.music-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 105, 180, 0.8);
+    transform: scale(1.05);
+}
+
+.music-btn:active {
+    transform: scale(0.98);
+}
+
+/* Анимации */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Эффект свечения */
+.glow {
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5), 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .message { font-size: 1.1rem; }
+    .music-btn { padding: 10px 14px; font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.8rem; }
+    .message { font-size: 0.95rem; }
+    .content { bottom: 20%; }
+    .music-btn { top: 15px; right: 15px; }
+}
