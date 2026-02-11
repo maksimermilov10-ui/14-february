@@ -197,7 +197,7 @@
       if (charIndex < currentText.length) {
         textElement.innerHTML += currentText.charAt(charIndex);
         charIndex++;
-        setTimeout(typeWriter, 80);
+        setTimeout(typeWriter, 100);
       } else {
         phraseIndex++;
         if (phraseIndex < phrases.length) {
@@ -209,13 +209,13 @@
         } else {
           setTimeout(() => {
             document.querySelector('.cursor').style.opacity = '0.3';
-          }, 500);
+          }, 700);
         }
       }
     }
 
     window.addEventListener('load', () => {
-      setTimeout(typeWriter, 4000);
+      setTimeout(typeWriter, 3200);
     });
 
     musicBtn.addEventListener('click', () => {
