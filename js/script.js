@@ -1,40 +1,54 @@
 // Текст, который будет печататься
-const textToType = "...быть рядом, даже когда всё идёт кувырком.";
+const phrases = [
+    "...быть рядом, даже когда всё идёт кувырком.",
+    "Я тебя люблю ♥"
+];
+
 const textElement = document.getElementById('text');
 const musicBtn = document.getElementById('musicBtn');
 const bgMusic = document.getElementById('bgMusic');
-let index = 0;
-let isPlaying = false;
 
-// Функция печатной машинки
+let phraseIndex = 0;
+let charIndex = 0;
+
 function typeWriter() {
-    if (index < textToType.length) {
-        textElement.innerHTML += textToType.charAt(index);
-        index++;
+    const currentText = phrases[phraseIndex];
+
+    if (charIndex < currentText.length) {
+        textElement.innerHTML += currentText.charAt(charIndex);
+        charIndex++;
         setTimeout(typeWriter, 80);
     } else {
-        // Уменьшаем прозрачность курсора после окончания печати
-        setTimeout(() => {
-            document.querySelector('.cursor').style.opacity = '0.3';
-        }, 500);
+        // Пауза после фразы
+        phraseIndex++;
+        if (phraseIndex < phrases.length) {
+            setTimeout(() => {
+                textElement.innerHTML += "<br>"; // перенос строки между фразами
+                charIndex = 0;
+                typeWriter();
+            }, 800);
+        } else {
+            // После последней фразы слегка приглушаем курсор
+            setTimeout(() => {
+                document.querySelector('.cursor').style.opacity = '0.3';
+            }, 500);
+        }
     }
 }
 
 // Запуск печати через 1.5 секунды после загрузки
 window.addEventListener('load', () => {
-    setTimeout(typeWriter, 3000);
+    setTimeout(typeWriter, 1500);
 });
 
 // Логика кнопки музыки
 musicBtn.addEventListener('click', () => {
     if (bgMusic.paused) {
         bgMusic.play();
-        isPlaying = true;
         musicBtn.textContent = "🔇 Выключить музыку";
         musicBtn.style.background = "rgba(255, 105, 180, 0.4)";
     } else {
         bgMusic.pause();
-        isPlaying = false;
         musicBtn.textContent = "🎵 Включить музыку";
         musicBtn.style.background = "rgba(255, 255, 255, 0.15)";
     }
