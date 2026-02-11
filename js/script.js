@@ -36,9 +36,9 @@ function typeWriter() {
     }
 }
 
-// Запуск печати через 1.5 секунды после загрузки
+// Запуск печати через 3 секунды после загрузки
 window.addEventListener('load', () => {
-    setTimeout(typeWriter, 1500);
+    setTimeout(typeWriter, 3000);
 });
 
 // Логика кнопки музыки
