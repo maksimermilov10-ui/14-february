@@ -21,20 +21,19 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 90%;
-            height: 90%;
+            width: 100%;
+            height: 100%;
             z-index: 0;
             overflow: hidden;
             background: #000;
         }
 
         .photo-background video {
-            width: 90%;
-            height: 90%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
-}
         .content {
             position: absolute;
             bottom: 10%;
@@ -128,12 +127,12 @@
     </style>
 </head>
 <body>
-  <!-- Фоновое видео -->
-<div class="photo-background">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="https://raw.githubusercontent.com/maksimermilov10-ui/14-february/main/media/background-video.mp4" type="video/mp4">
-  </video>
-</div>
+    <!-- Фоновое видео -->
+    <div class="photo-background">
+        <video autoplay muted loop playsinline preload="auto">
+           <source src="https://raw.githubusercontent.com/maksimermilov10-ui/14-february/main/media/background-video.mp4" type="video/mp4">
+        </video>
+    </div>
 
     <!-- Кнопка музыки -->
     <button class="music-btn" id="musicBtn">🎵 Включить музыку</button>
